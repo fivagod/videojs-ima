@@ -190,10 +190,8 @@ SdkImpl.prototype.initAdObjects = function() {
  */
 SdkImpl.prototype.requestAds = function() {
   const adsRequest = new google.ima.AdsRequest();
-  const adTagUrl = this.controller.getSettings().adTagUrl instanceof Array ? this.controller.getSettings().adTagUrl.shift() : this.controller.getSettings().adTagUrl;
-
-  if (adTagUrl) {
-    adsRequest.adTagUrl = adTagUrl;
+  if (this.controller.getSettings().adTagUrl) {
+    adsRequest.adTagUrl = this.controller.getSettings().adTagUrl;
   } else {
     adsRequest.adsResponse = this.controller.getSettings().adsResponse;
   }
@@ -401,15 +399,7 @@ SdkImpl.prototype.onContentPauseRequested = function(adEvent) {
 SdkImpl.prototype.onContentResumeRequested = function(adEvent) {
   this.adsActive = false;
   this.adPlaying = false;
-  if(this.controller.getSettings().adTagUrl instanceof Array && this.controller.getSettings().adTagUrl.length) {
-    // Process multiply adtag (more than one preroll or postroll at the same time)
-    this.controller.playerWrapper.vjsPlayer.ads._inLinearAdMode = false;
-    this.controller.playerWrapper.vjsPlayer.removeClass('vjs-ad-playing');
-    this.controller.playerWrapper.vjsPlayer.addClass('vjs-has-started');
-    this.requestAds();
-  } else {
-    this.controller.onAdBreakEnd();
-  }
+  this.controller.onAdBreakEnd();
   // Hide controls in case of future non-linear ads. They'll be unhidden in
   // content_pause_requested.
 };
