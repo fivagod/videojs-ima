@@ -703,6 +703,18 @@ Controller.prototype.changeAdTag = function(adTag) {
   this.settings.adTagUrl = adTag;
 };
 
+/**
+ * Changes the ad response. You will need to call requestAds after this method
+ * for the new ads to be requested.
+ * @param {?string} adsResponse The ad response to be used the next time
+ *     requestAds is called.
+ */
+Controller.prototype.changeAdsResponse = function(adsResponse) {
+  this.reset();
+  this.settings.adTagUrl = undefined;
+  this.settings.adsResponse = adsResponse;
+};
+
 
 /**
  * Pauses the ad.

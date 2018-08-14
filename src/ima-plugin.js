@@ -92,6 +92,15 @@ const ImaPlugin = function(player, options) {
     this.controller.changeAdTag(adTag);
   }.bind(this);
 
+  /**
+   * Changes the adsResponse. You will need to call requestAds after this method
+   * for the new ads to be requested.
+   * @param {?string} adsResponse The ad response to be used the next time requestAds
+   *     is called.
+   */
+  this.changeAdsResponse = function(adsResponse) {
+    this.controller.changeAdsResponse(adsResponse);
+  }.bind(this);
 
   /**
    * Returns the instance of the AdsManager.

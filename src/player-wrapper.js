@@ -493,7 +493,7 @@ PlayerWrapper.prototype.onAdStart = function() {
  */
 PlayerWrapper.prototype.onAllAdsCompleted = function() {
   if (this.contentComplete == true) {
-    if (this.h5Player.src != this.contentSource) {
+    if (this.h5Player.src != this.contentSource && this.contentSource && this.contentSource != '') {
       this.vjsPlayer.src(this.contentSource);
     }
     this.controller.onContentAndAdsCompleted();
