@@ -13,6 +13,7 @@ module.exports = {
         'no-console': ['error', {
           'allow': ['warn', 'error']
         }],
+        'linebreak-style': ['error', 'windows']
     },
     'plugins': [
       'jsdoc',
