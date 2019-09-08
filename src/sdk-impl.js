@@ -171,7 +171,7 @@ SdkImpl.prototype.initAdObjects = function() {
         this.controller.getSettings().numRedirects);
   }
 
-  this.adsLoader.getSettings().setPlayerType('videojs-ima');
+  this.adsLoader.getSettings().setPlayerType(this.controller.getSettings().playerType);
   this.adsLoader.getSettings().setPlayerVersion(pkg.version);
   this.adsLoader.getSettings().setAutoPlayAdBreaks(this.autoPlayAdBreaks);
 
